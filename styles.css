@@ -130,13 +130,34 @@ a:hover {
     font-size: 2rem;
 }
 
+.nav-menu {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-link {
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+    background-color: var(--bg-tertiary);
+}
+
 .nav-controls {
     display: flex;
     gap: 1rem;
+    align-items: center;
 }
 
 .language-toggle,
-.theme-toggle {
+.theme-toggle,
+.mobile-menu-toggle {
     background: none;
     border: 1px solid var(--border-color);
     border-radius: 0.5rem;
@@ -151,9 +172,14 @@ a:hover {
 }
 
 .language-toggle:hover,
-.theme-toggle:hover {
+.theme-toggle:hover,
+.mobile-menu-toggle:hover {
     background-color: var(--bg-tertiary);
     border-color: var(--primary-color);
+}
+
+.mobile-menu-toggle {
+    display: none;
 }
 
 /* Hero Section */
@@ -187,6 +213,7 @@ a:hover {
     justify-content: center;
     gap: 3rem;
     flex-wrap: wrap;
+    margin-bottom: 3rem;
 }
 
 .stat {
@@ -203,6 +230,50 @@ a:hover {
 .stat-label {
     font-size: 1rem;
     color: rgba(255, 255, 255, 0.8);
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.hero-btn {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.hero-btn.primary {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.hero-btn.secondary {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.hero-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.hero-btn.primary:hover {
+    background-color: #d97706;
+}
+
+.hero-btn.secondary:hover {
+    background-color: white;
+    color: var(--primary-color);
 }
 
 /* Section Titles */
@@ -407,6 +478,284 @@ a:hover {
     color: var(--primary-color);
 }
 
+/* Tools Section */
+.tools-section {
+    padding: 5rem 0;
+    background-color: var(--bg-secondary);
+}
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+}
+
+.tool-category {
+    background-color: var(--bg-card);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+}
+
+.tool-category-title {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.tool-items {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.tool-item {
+    padding: 1.5rem;
+    background-color: var(--bg-tertiary);
+    border-radius: 0.75rem;
+    border: 1px solid var(--border-color);
+}
+
+.tool-item h4 {
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+}
+
+.tool-item p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+.tool-link {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.tool-link:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+/* Certifications Section */
+.certifications-section {
+    padding: 5rem 0;
+    background-color: var(--bg-primary);
+}
+
+.certifications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.certification-card {
+    background-color: var(--bg-card);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.certification-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+.cert-icon {
+    width: 4rem;
+    height: 4rem;
+    background: linear-gradient(135deg, var(--accent-color), var(--warning-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+}
+
+.cert-icon i {
+    font-size: 2rem;
+    color: white;
+}
+
+.certification-card h3 {
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.certification-card p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.cert-details {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.cert-details .level {
+    font-size: 0.875rem;
+}
+
+.cost {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-weight: 500;
+}
+
+.cert-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.cert-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Community Section */
+.community-section {
+    padding: 5rem 0;
+    background-color: var(--bg-secondary);
+}
+
+.community-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.community-card {
+    background-color: var(--bg-card);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.community-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+.community-card i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.community-card h3 {
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.community-card p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.community-btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.community-btn:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+/* News Section */
+.news-section {
+    padding: 5rem 0;
+    background-color: var(--bg-primary);
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+}
+
+.news-card {
+    background-color: var(--bg-card);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+    display: flex;
+    gap: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+.news-image {
+    width: 4rem;
+    height: 4rem;
+    background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.news-image i {
+    font-size: 2rem;
+    color: white;
+}
+
+.news-content {
+    flex: 1;
+}
+
+.news-content h3 {
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    font-size: 1.25rem;
+}
+
+.news-content p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+.news-date {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    font-style: italic;
+}
+
 /* Newsletter Section */
 .newsletter {
     padding: 5rem 0;
@@ -594,6 +943,14 @@ a:hover {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+    
+    .mobile-menu-toggle {
+        display: flex;
+    }
+    
     .hero-title {
         font-size: 2.5rem;
     }
@@ -603,11 +960,32 @@ a:hover {
         gap: 1.5rem;
     }
     
+    .hero-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
     .paths-grid {
         grid-template-columns: 1fr;
     }
     
     .resources-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tools-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .certifications-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .community-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .news-grid {
         grid-template-columns: 1fr;
     }
     
@@ -629,6 +1007,11 @@ a:hover {
         width: 100%;
         justify-content: center;
     }
+    
+    .news-card {
+        flex-direction: column;
+        text-align: center;
+    }
 }
 
 @media (max-width: 480px) {
@@ -649,6 +1032,22 @@ a:hover {
     }
     
     .path-card {
+        padding: 1.5rem;
+    }
+    
+    .tool-category {
+        padding: 1.5rem;
+    }
+    
+    .certification-card {
+        padding: 1.5rem;
+    }
+    
+    .community-card {
+        padding: 1.5rem;
+    }
+    
+    .news-card {
         padding: 1.5rem;
     }
 }
@@ -718,4 +1117,1322 @@ a:hover {
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+/* Mobile menu styles */
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-modal);
+    z-index: 1000;
+    padding: 2rem;
+}
+
+.mobile-menu.active {
+    display: block;
+}
+
+.mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.mobile-menu-close {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+.mobile-menu-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.mobile-menu-link {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-link:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Active navigation link */
+.nav-link.active {
+    color: var(--primary-color);
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--primary-color);
+}
+
+/* To-Do List Section */
+.todo-section {
+    padding: 5rem 0;
+    background-color: var(--bg-primary);
+}
+
+.todo-controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.todo-btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.todo-btn.primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: white;
+}
+
+.todo-btn.secondary {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.todo-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.todo-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.todo-input-group {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.todo-input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+    font-size: 1rem;
+    min-width: 200px;
+}
+
+.todo-input::placeholder {
+    color: var(--text-muted);
+}
+
+.todo-path-select {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+    font-size: 1rem;
+    cursor: pointer;
+    min-width: 150px;
+}
+
+.todo-add-btn {
+    padding: 0.75rem 1rem;
+    background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    min-width: 50px;
+}
+
+.todo-add-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.todo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.todo-item {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.todo-item:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-color);
+}
+
+.todo-item.completed {
+    opacity: 0.7;
+    background-color: var(--bg-tertiary);
+}
+
+.todo-item.completed .todo-text {
+    text-decoration: line-through;
+    color: var(--text-muted);
+}
+
+.todo-checkbox {
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 2px solid var(--border-color);
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: transparent;
+    background-color: var(--bg-card);
+}
+
+.todo-checkbox.checked {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: white;
+}
+
+.todo-content {
+    flex: 1;
+}
+
+.todo-text {
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.todo-meta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.todo-path {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.todo-date {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+}
+
+.todo-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.todo-action-btn {
+    padding: 0.5rem;
+    background: none;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--text-muted);
+}
+
+.todo-action-btn:hover {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
+.todo-action-btn.delete:hover {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+/* Arabic Courses Section */
+.arabic-courses-section {
+    padding: 5rem 0;
+    background-color: var(--bg-secondary);
+}
+
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.course-category {
+    background-color: var(--bg-card);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+}
+
+.course-category-title {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    text-align: center;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+}
+
+.course-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.course-item {
+    background-color: var(--bg-tertiary);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    display: flex;
+    gap: 1rem;
+    transition: all 0.3s ease;
+}
+
+.course-item:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-color);
+}
+
+.course-icon {
+    width: 3rem;
+    height: 3rem;
+    background: linear-gradient(135deg, var(--accent-color), var(--warning-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.course-icon i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.course-content {
+    flex: 1;
+}
+
+.course-content h4 {
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    font-size: 1.25rem;
+}
+
+.course-content p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.course-meta {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.course-provider,
+.course-duration,
+.course-level,
+.course-price {
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: 1px solid var(--border-color);
+}
+
+.course-provider {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.course-level.beginner {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.course-level.intermediate {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.course-level.advanced {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.course-price {
+    background-color: var(--accent-color);
+    color: white;
+    font-weight: 600;
+}
+
+.course-link {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.course-link:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Responsive adjustments for new sections */
+@media (max-width: 768px) {
+    .todo-input-group {
+        flex-direction: column;
+    }
+    
+    .todo-input,
+    .todo-path-select {
+        min-width: 100%;
+    }
+    
+    .todo-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .todo-meta {
+        justify-content: center;
+    }
+    
+    .todo-actions {
+        justify-content: center;
+    }
+    
+    .courses-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .course-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .course-meta {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .todo-controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .todo-btn {
+        width: 100%;
+        max-width: 200px;
+    }
+    
+    .course-category {
+        padding: 1.5rem;
+    }
+    
+    .course-item {
+        padding: 1rem;
+    }
+}
+
+/* RTL specific adjustments */
+[dir="rtl"] .hero-stats {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .newsletter-form {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .social-links {
+    flex-direction: row-reverse;
+}
+
+/* Animation classes */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slide-in {
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* Loading states */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid var(--primary-color);
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Mobile menu styles */
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-modal);
+    z-index: 1000;
+    padding: 2rem;
+}
+
+.mobile-menu.active {
+    display: block;
+}
+
+.mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.mobile-menu-close {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+.mobile-menu-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.mobile-menu-link {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-link:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Active navigation link */
+.nav-link.active {
+    color: var(--primary-color);
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--primary-color);
+}
+
+/* To-Do List Section */
+.todo-section {
+    padding: 5rem 0;
+    background-color: var(--bg-primary);
+}
+
+.todo-controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.todo-btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.todo-btn.primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: white;
+}
+
+.todo-btn.secondary {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.todo-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.todo-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.todo-input-group {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.todo-input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+    font-size: 1rem;
+    min-width: 200px;
+}
+
+.todo-input::placeholder {
+    color: var(--text-muted);
+}
+
+.todo-path-select {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+    font-size: 1rem;
+    cursor: pointer;
+    min-width: 150px;
+}
+
+.todo-add-btn {
+    padding: 0.75rem 1rem;
+    background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    min-width: 50px;
+}
+
+.todo-add-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.todo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.todo-item {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.todo-item:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-color);
+}
+
+.todo-item.completed {
+    opacity: 0.7;
+    background-color: var(--bg-tertiary);
+}
+
+.todo-item.completed .todo-text {
+    text-decoration: line-through;
+    color: var(--text-muted);
+}
+
+.todo-checkbox {
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 2px solid var(--border-color);
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: transparent;
+    background-color: var(--bg-card);
+}
+
+.todo-checkbox.checked {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: white;
+}
+
+.todo-content {
+    flex: 1;
+}
+
+.todo-text {
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.todo-meta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.todo-path {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.todo-date {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+}
+
+.todo-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.todo-action-btn {
+    padding: 0.5rem;
+    background: none;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--text-muted);
+}
+
+.todo-action-btn:hover {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
+.todo-action-btn.delete:hover {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+/* Arabic Courses Section */
+.arabic-courses-section {
+    padding: 5rem 0;
+    background-color: var(--bg-secondary);
+}
+
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.course-category {
+    background-color: var(--bg-card);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+}
+
+.course-category-title {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    text-align: center;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+}
+
+.course-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.course-item {
+    background-color: var(--bg-tertiary);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    display: flex;
+    gap: 1rem;
+    transition: all 0.3s ease;
+}
+
+.course-item:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-color);
+}
+
+.course-icon {
+    width: 3rem;
+    height: 3rem;
+    background: linear-gradient(135deg, var(--accent-color), var(--warning-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.course-icon i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.course-content {
+    flex: 1;
+}
+
+.course-content h4 {
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    font-size: 1.25rem;
+}
+
+.course-content p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.course-meta {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.course-provider,
+.course-duration,
+.course-level,
+.course-price {
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: 1px solid var(--border-color);
+}
+
+.course-provider {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.course-level.beginner {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.course-level.intermediate {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.course-level.advanced {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.course-price {
+    background-color: var(--accent-color);
+    color: white;
+    font-weight: 600;
+}
+
+.course-link {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.course-link:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Responsive adjustments for new sections */
+@media (max-width: 768px) {
+    .todo-input-group {
+        flex-direction: column;
+    }
+    
+    .todo-input,
+    .todo-path-select {
+        min-width: 100%;
+    }
+    
+    .todo-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .todo-meta {
+        justify-content: center;
+    }
+    
+    .todo-actions {
+        justify-content: center;
+    }
+    
+    .courses-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .course-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .course-meta {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .todo-controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .todo-btn {
+        width: 100%;
+        max-width: 200px;
+    }
+    
+    .course-category {
+        padding: 1.5rem;
+    }
+    
+    .course-item {
+        padding: 1rem;
+    }
+}
+
+/* Notification styles */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--primary-color);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow-lg);
+    z-index: 10000;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    max-width: 300px;
+    font-weight: 500;
+}
+
+.notification-content {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.notification-content i {
+    font-size: 1.2rem;
+}
+
+.notification-success {
+    background: var(--secondary-color);
+}
+
+.notification-error {
+    background: var(--danger-color);
+}
+
+.notification-info {
+    background: var(--primary-color);
+}
+
+/* RTL support for notifications */
+[dir="rtl"] .notification {
+    right: auto;
+    left: 20px;
+    transform: translateX(-100%);
+}
+
+[dir="rtl"] .notification.show {
+    transform: translateX(0);
+}
+
+/* Enhanced todo item styles */
+.todo-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.todo-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.todo-item.completed::before {
+    background: var(--secondary-color);
+}
+
+.todo-item:hover::before {
+    width: 8px;
+}
+
+/* Enhanced course item styles */
+.course-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.course-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-color), transparent);
+    transition: width 0.3s ease;
+    opacity: 0.1;
+}
+
+.course-item:hover::after {
+    width: 100%;
+}
+
+/* Loading animation for todo items */
+.todo-item.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.todo-item.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid var(--primary-color);
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* Empty state styling */
+.todo-empty {
+    background: var(--bg-tertiary);
+    border: 2px dashed var(--border-color);
+    border-radius: 1rem;
+    transition: all 0.3s ease;
+}
+
+.todo-empty:hover {
+    border-color: var(--primary-color);
+    background: var(--bg-card);
+}
+
+/* Progress indicator for todo section */
+.todo-progress {
+    background: var(--bg-tertiary);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.todo-progress-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--border-color);
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 0.5rem 0;
+}
+
+.todo-progress-fill {
+    height: 100%;
+    background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.todo-progress-text {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+/* Filter controls for todo */
+.todo-filters {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.todo-filter-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+    background: var(--bg-card);
+    color: var(--text-secondary);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.875rem;
+}
+
+.todo-filter-btn.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.todo-filter-btn:hover {
+    background: var(--bg-tertiary);
+    border-color: var(--primary-color);
+}
+
+.todo-filter-btn.active:hover {
+    background: var(--primary-dark);
+}
+
+/* Search functionality for todo */
+.todo-search {
+    margin-bottom: 1.5rem;
+}
+
+.todo-search-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    background: var(--bg-card);
+    color: var(--text-primary);
+    font-size: 1rem;
+}
+
+.todo-search-input::placeholder {
+    color: var(--text-muted);
+}
+
+/* Statistics for todo */
+.todo-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.todo-stat {
+    background: var(--bg-card);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    border: 1px solid var(--border-color);
+}
+
+.todo-stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    display: block;
+}
+
+.todo-stat-label {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}
+
+/* Export/Import functionality */
+.todo-export-import {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.todo-export-btn,
+.todo-import-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+    background: var(--bg-card);
+    color: var(--text-primary);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.todo-export-btn:hover,
+.todo-import-btn:hover {
+    background: var(--bg-tertiary);
+    border-color: var(--primary-color);
+}
+
+/* Dark theme adjustments for new sections */
+[data-theme="dark"] .todo-item {
+    background-color: var(--bg-card);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .course-item {
+    background-color: var(--bg-tertiary);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .todo-checkbox {
+    background-color: var(--bg-card);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .todo-checkbox.checked {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+/* RTL adjustments for new sections */
+[dir="rtl"] .todo-item::before {
+    left: auto;
+    right: 0;
+}
+
+[dir="rtl"] .course-item::after {
+    right: auto;
+    left: 0;
+}
+
+[dir="rtl"] .todo-actions {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .todo-meta {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .course-meta {
+    flex-direction: row-reverse;
 }
