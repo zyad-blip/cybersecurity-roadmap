@@ -15,6 +15,15 @@
                 <i class="fas fa-shield-alt"></i>
                 <span class="nav-title" data-en="CyberSec Roadmap" data-ar="خريطة الطريق للأمن السيبراني"></span>
             </div>
+            <div class="nav-menu">
+                <a href="#home" class="nav-link" data-en="Home" data-ar="الرئيسية"></a>
+                <a href="#career-paths" class="nav-link" data-en="Career Paths" data-ar="المسارات المهنية"></a>
+                <a href="#resources" class="nav-link" data-en="Resources" data-ar="الموارد"></a>
+                <a href="#tools" class="nav-link" data-en="Tools" data-ar="الأدوات"></a>
+                <a href="#certifications" class="nav-link" data-en="Certifications" data-ar="الشهادات"></a>
+                <a href="#community" class="nav-link" data-en="Community" data-ar="المجتمع"></a>
+                <a href="#news" class="nav-link" data-en="News" data-ar="الأخبار"></a>
+            </div>
             <div class="nav-controls">
                 <button class="language-toggle" onclick="toggleLanguage()">
                     <i class="fas fa-language"></i>
@@ -23,12 +32,15 @@
                 <button class="theme-toggle" onclick="toggleTheme()">
                     <i class="fas fa-moon"></i>
                 </button>
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
         </nav>
     </header>
 
     <main class="main">
-        <section class="hero">
+        <section id="home" class="hero">
             <div class="hero-content">
                 <h1 class="hero-title" data-en="Cybersecurity Career Roadmap" data-ar="خريطة الطريق المهنية للأمن السيبراني"></h1>
                 <p class="hero-subtitle" data-en="Navigate your path to becoming a cybersecurity professional with comprehensive roadmaps, resources, and guidance for every specialization." data-ar="اكتشف طريقك لتصبح محترفاً في الأمن السيبراني مع خرائط طريق شاملة وموارد وتوجيه لكل تخصص."></p>
@@ -46,10 +58,14 @@
                         <span class="stat-label" data-en="Learning" data-ar="التعلم"></span>
                     </div>
                 </div>
+                <div class="hero-actions">
+                    <button class="hero-btn primary" onclick="scrollToSection('career-paths')" data-en="Explore Paths" data-ar="استكشف المسارات"></button>
+                    <button class="hero-btn secondary" onclick="scrollToSection('resources')" data-en="View Resources" data-ar="عرض الموارد"></button>
+                </div>
             </div>
         </section>
 
-        <section class="career-paths">
+        <section id="career-paths" class="career-paths">
             <div class="container">
                 <h2 class="section-title" data-en="Choose Your Cybersecurity Path" data-ar="اختر مسار الأمن السيبراني الخاص بك"></h2>
                 <div class="paths-grid">
@@ -178,7 +194,192 @@
             </div>
         </div>
 
-        <section class="resources">
+        <!-- To-Do List Section -->
+        <section id="todo" class="todo-section">
+            <div class="container">
+                <h2 class="section-title" data-en="Your Learning To-Do List" data-ar="قائمة مهام التعلم الخاصة بك"></h2>
+                <div class="todo-controls">
+                    <button class="todo-btn primary" onclick="addTodoItem()" data-en="Add New Task" data-ar="أضف مهمة جديدة"></button>
+                    <button class="todo-btn secondary" onclick="clearCompletedTodos()" data-en="Clear Completed" data-ar="امسح المكتملة"></button>
+                </div>
+                <div class="todo-container">
+                    <div class="todo-input-group">
+                        <input type="text" id="todoInput" class="todo-input" placeholder="Enter your learning task..." data-ar-placeholder="أدخل مهمة التعلم الخاصة بك...">
+                        <select id="todoPath" class="todo-path-select">
+                            <option value="pentest" data-en="Penetration Testing" data-ar="اختبار الاختراق"></option>
+                            <option value="analysis" data-en="Security Analysis" data-ar="تحليل الأمان"></option>
+                            <option value="incident" data-en="Incident Response" data-ar="الاستجابة للحوادث"></option>
+                            <option value="forensics" data-en="Digital Forensics" data-ar="التحليل الجنائي الرقمي"></option>
+                            <option value="governance" data-en="Security Governance" data-ar="حوكمة الأمان"></option>
+                            <option value="cloud" data-en="Cloud Security" data-ar="أمان السحابة"></option>
+                            <option value="iot" data-en="IoT Security" data-ar="أمان إنترنت الأشياء"></option>
+                            <option value="malware" data-en="Malware Analysis" data-ar="تحليل البرمجيات الخبيثة"></option>
+                        </select>
+                        <button onclick="addTodoItem()" class="todo-add-btn">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                    <div id="todoList" class="todo-list">
+                        <!-- Todo items will be added here dynamically -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Arabic Courses Section -->
+        <section id="arabic-courses" class="arabic-courses-section">
+            <div class="container">
+                <h2 class="section-title" data-en="Arabic Cybersecurity Courses & Resources" data-ar="كورسات وموارد الأمن السيبراني باللغة العربية"></h2>
+                <div class="courses-grid">
+                    <div class="course-category">
+                        <h3 class="course-category-title" data-en="Free Arabic Courses" data-ar="الكورسات العربية المجانية"></h3>
+                        <div class="course-items">
+                            <div class="course-item">
+                                <div class="course-icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <div class="course-content">
+                                    <h4 data-en="Cybersecurity Fundamentals" data-ar="أساسيات الأمن السيبراني"></h4>
+                                    <p data-en="Complete course in Arabic covering security basics" data-ar="كورس كامل بالعربية يغطي أساسيات الأمان"></p>
+                                    <div class="course-meta">
+                                        <span class="course-provider" data-en="Coursera" data-ar="كورسيرا"></span>
+                                        <span class="course-duration" data-en="8 weeks" data-ar="8 أسابيع"></span>
+                                        <span class="course-level" data-en="Beginner" data-ar="مبتدئ"></span>
+                                    </div>
+                                    <a href="#" class="course-link" data-en="Start Course" data-ar="ابدأ الكورس"></a>
+                                </div>
+                            </div>
+                            <div class="course-item">
+                                <div class="course-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div class="course-content">
+                                    <h4 data-en="Network Security" data-ar="أمان الشبكات"></h4>
+                                    <p data-en="Learn network security concepts in Arabic" data-ar="تعلم مفاهيم أمان الشبكات بالعربية"></p>
+                                    <div class="course-meta">
+                                        <span class="course-provider" data-en="edX" data-ar="edX"></span>
+                                        <span class="course-duration" data-en="6 weeks" data-ar="6 أسابيع"></span>
+                                        <span class="course-level" data-en="Intermediate" data-ar="متوسط"></span>
+                                    </div>
+                                    <a href="#" class="course-link" data-en="Start Course" data-ar="ابدأ الكورس"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="course-category">
+                        <h3 class="course-category-title" data-en="Paid Arabic Courses" data-ar="الكورسات العربية المدفوعة"></h3>
+                        <div class="course-items">
+                            <div class="course-item">
+                                <div class="course-icon">
+                                    <i class="fas fa-certificate"></i>
+                                </div>
+                                <div class="course-content">
+                                    <h4 data-en="Ethical Hacking" data-ar="الاختراق الأخلاقي"></h4>
+                                    <p data-en="Professional ethical hacking course in Arabic" data-ar="كورس احترافي في الاختراق الأخلاقي بالعربية"></p>
+                                    <div class="course-meta">
+                                        <span class="course-provider" data-en="Udemy" data-ar="Udemy"></span>
+                                        <span class="course-duration" data-en="12 weeks" data-ar="12 أسبوع"></span>
+                                        <span class="course-level" data-en="Advanced" data-ar="متقدم"></span>
+                                        <span class="course-price" data-en="$99" data-ar="99$"></span>
+                                    </div>
+                                    <a href="#" class="course-link" data-en="Enroll Now" data-ar="سجل الآن"></a>
+                                </div>
+                            </div>
+                            <div class="course-item">
+                                <div class="course-icon">
+                                    <i class="fas fa-bug"></i>
+                                </div>
+                                <div class="course-content">
+                                    <h4 data-en="Penetration Testing" data-ar="اختبار الاختراق"></h4>
+                                    <p data-en="Complete penetration testing course in Arabic" data-ar="كورس كامل في اختبار الاختراق بالعربية"></p>
+                                    <div class="course-meta">
+                                        <span class="course-provider" data-en="Pluralsight" data-ar="Pluralsight"></span>
+                                        <span class="course-duration" data-en="10 weeks" data-ar="10 أسابيع"></span>
+                                        <span class="course-level" data-en="Intermediate" data-ar="متوسط"></span>
+                                        <span class="course-price" data-en="$149" data-ar="149$"></span>
+                                    </div>
+                                    <a href="#" class="course-link" data-en="Enroll Now" data-ar="سجل الآن"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="course-category">
+                        <h3 class="course-category-title" data-en="Arabic YouTube Channels" data-ar="قنوات يوتيوب العربية"></h3>
+                        <div class="course-items">
+                            <div class="course-item">
+                                <div class="course-icon">
+                                    <i class="fab fa-youtube"></i>
+                                </div>
+                                <div class="course-content">
+                                    <h4 data-en="Cybersecurity Arabic" data-ar="الأمن السيبراني بالعربية"></h4>
+                                    <p data-en="Free tutorials and practical demonstrations" data-ar="دروس مجانية وعروض عملية"></p>
+                                    <div class="course-meta">
+                                        <span class="course-provider" data-en="YouTube" data-ar="يوتيوب"></span>
+                                        <span class="course-duration" data-en="Free" data-ar="مجاني"></span>
+                                        <span class="course-level" data-en="All Levels" data-ar="جميع المستويات"></span>
+                                    </div>
+                                    <a href="#" class="course-link" data-en="Watch Channel" data-ar="شاهد القناة"></a>
+                                </div>
+                            </div>
+                            <div class="course-item">
+                                <div class="course-icon">
+                                    <i class="fab fa-youtube"></i>
+                                </div>
+                                <div class="course-content">
+                                    <h4 data-en="Hacking Arabic" data-ar="الهاكينج بالعربية"></h4>
+                                    <p data-en="Ethical hacking tutorials in Arabic" data-ar="دروس في الاختراق الأخلاقي بالعربية"></p>
+                                    <div class="course-meta">
+                                        <span class="course-provider" data-en="YouTube" data-ar="يوتيوب"></span>
+                                        <span class="course-duration" data-en="Free" data-ar="مجاني"></span>
+                                        <span class="course-level" data-en="All Levels" data-ar="جميع المستويات"></span>
+                                    </div>
+                                    <a href="#" class="course-link" data-en="Watch Channel" data-ar="شاهد القناة"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="course-category">
+                        <h3 class="course-category-title" data-en="Arabic Books & Documentation" data-ar="الكتب والتوثيق العربي"></h3>
+                        <div class="course-items">
+                            <div class="course-item">
+                                <div class="course-icon">
+                                    <i class="fas fa-book"></i>
+                                </div>
+                                <div class="course-content">
+                                    <h4 data-en="Cybersecurity Guide" data-ar="دليل الأمن السيبراني"></h4>
+                                    <p data-en="Comprehensive Arabic guide to cybersecurity" data-ar="دليل شامل للأمن السيبراني بالعربية"></p>
+                                    <div class="course-meta">
+                                        <span class="course-provider" data-en="Arabic Publisher" data-ar="ناشر عربي"></span>
+                                        <span class="course-duration" data-en="Book" data-ar="كتاب"></span>
+                                        <span class="course-level" data-en="All Levels" data-ar="جميع المستويات"></span>
+                                        <span class="course-price" data-en="$25" data-ar="25$"></span>
+                                    </div>
+                                    <a href="#" class="course-link" data-en="Get Book" data-ar="احصل على الكتاب"></a>
+                                </div>
+                            </div>
+                            <div class="course-item">
+                                <div class="course-icon">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <div class="course-content">
+                                    <h4 data-en="Practical Labs" data-ar="المختبرات العملية"></h4>
+                                    <p data-en="Step-by-step practical exercises in Arabic" data-ar="تمارين عملية خطوة بخطوة بالعربية"></p>
+                                    <div class="course-meta">
+                                        <span class="course-provider" data-en="Arabic Labs" data-ar="مختبرات عربية"></span>
+                                        <span class="course-duration" data-en="Labs" data-ar="مختبرات"></span>
+                                        <span class="course-level" data-en="All Levels" data-ar="جميع المستويات"></span>
+                                        <span class="course-price" data-en="Free" data-ar="مجاني"></span>
+                                    </div>
+                                    <a href="#" class="course-link" data-en="Access Labs" data-ar="الوصول للمختبرات"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="resources" class="resources">
             <div class="container">
                 <h2 class="section-title" data-en="Learning Resources" data-ar="موارد التعلم"></h2>
                 <div class="resources-grid">
@@ -222,6 +423,124 @@
             </div>
         </section>
 
+        <section id="tools" class="tools-section">
+            <div class="container">
+                <h2 class="section-title" data-en="Essential Cybersecurity Tools" data-ar="أدوات الأمن السيبراني الأساسية"></h2>
+                <div class="tools-grid">
+                    <div class="tool-category">
+                        <h3 class="tool-category-title" data-en="Network Security" data-ar="أمان الشبكات"></h3>
+                        <div class="tool-items">
+                            <div class="tool-item">
+                                <h4>Nmap</h4>
+                                <p data-en="Network discovery and security auditing" data-ar="اكتشاف الشبكات ومراجعة الأمان"></p>
+                                <a href="https://nmap.org" target="_blank" class="tool-link">Download</a>
+                            </div>
+                            <div class="tool-item">
+                                <h4>Wireshark</h4>
+                                <p data-en="Network protocol analyzer" data-ar="محلل بروتوكولات الشبكة"></p>
+                                <a href="https://wireshark.org" target="_blank" class="tool-link">Download</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tool-category">
+                        <h3 class="tool-category-title" data-en="Web Security" data-ar="أمان الويب"></h3>
+                        <div class="tool-items">
+                            <div class="tool-item">
+                                <h4>Burp Suite</h4>
+                                <p data-en="Web application security testing" data-ar="اختبار أمان تطبيقات الويب"></p>
+                                <a href="https://portswigger.net/burp" target="_blank" class="tool-link">Download</a>
+                            </div>
+                            <div class="tool-item">
+                                <h4>OWASP ZAP</h4>
+                                <p data-en="Open source web app scanner" data-ar="ماسح تطبيقات الويب مفتوح المصدر"></p>
+                                <a href="https://owasp.org/www-project-zap/" target="_blank" class="tool-link">Download</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="certifications" class="certifications-section">
+            <div class="container">
+                <h2 class="section-title" data-en="Professional Certifications" data-ar="الشهادات المهنية"></h2>
+                <div class="certifications-grid">
+                    <div class="certification-card">
+                        <div class="cert-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h3>CompTIA Security+</h3>
+                        <p data-en="Entry-level security certification" data-ar="شهادة أمان للمبتدئين"></p>
+                        <div class="cert-details">
+                            <span class="level beginner" data-en="Beginner" data-ar="مبتدئ"></span>
+                            <span class="cost" data-en="$370" data-ar="370$"></span>
+                        </div>
+                        <a href="https://www.comptia.org/certifications/security" target="_blank" class="cert-btn">Learn More</a>
+                    </div>
+                    <div class="certification-card">
+                        <div class="cert-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>CISSP</h3>
+                        <p data-en="Advanced security management" data-ar="إدارة الأمان المتقدمة"></p>
+                        <div class="cert-details">
+                            <span class="level advanced" data-en="Advanced" data-ar="متقدم"></span>
+                            <span class="cost" data-en="$699" data-ar="699$"></span>
+                        </div>
+                        <a href="https://www.isc2.org/certifications/cissp" target="_blank" class="cert-btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="community" class="community-section">
+            <div class="container">
+                <h2 class="section-title" data-en="Join the Community" data-ar="انضم إلى المجتمع"></h2>
+                <div class="community-grid">
+                    <div class="community-card">
+                        <i class="fab fa-discord"></i>
+                        <h3 data-en="Discord Servers" data-ar="خوادم Discord"></h3>
+                        <p data-en="Connect with cybersecurity professionals" data-ar="تواصل مع محترفي الأمن السيبراني"></p>
+                        <a href="#" class="community-btn">Join Discord</a>
+                    </div>
+                    <div class="community-card">
+                        <i class="fab fa-reddit"></i>
+                        <h3 data-en="Reddit Communities" data-ar="مجتمعات Reddit"></h3>
+                        <p data-en="Discuss security topics and get help" data-ar="ناقش مواضيع الأمان واحصل على المساعدة"></p>
+                        <a href="https://reddit.com/r/cybersecurity" target="_blank" class="community-btn">Visit Reddit</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="news" class="news-section">
+            <div class="container">
+                <h2 class="section-title" data-en="Latest Cybersecurity News" data-ar="أحدث أخبار الأمن السيبراني"></h2>
+                <div class="news-grid">
+                    <article class="news-card">
+                        <div class="news-image">
+                            <i class="fas fa-newspaper"></i>
+                        </div>
+                        <div class="news-content">
+                            <h3 data-en="Ransomware Attacks on the Rise" data-ar="هجمات الفدية في تزايد"></h3>
+                            <p data-en="Recent reports show a significant increase in ransomware attacks targeting healthcare and education sectors." data-ar="تظهر التقارير الحديثة زيادة كبيرة في هجمات الفدية التي تستهدف قطاعي الصحة والتعليم."></p>
+                            <span class="news-date" data-en="2 days ago" data-ar="منذ يومين"></span>
+                        </div>
+                    </article>
+                    <article class="news-card">
+                        <div class="news-image">
+                            <i class="fas fa-shield-virus"></i>
+                        </div>
+                        <div class="news-content">
+                            <h3 data-en="New Zero-Day Vulnerability Discovered" data-ar="اكتشاف ثغرة صفرية جديدة"></h3>
+                            <p data-en="Security researchers have identified a critical zero-day vulnerability affecting major web browsers." data-ar="اكتشف باحثو الأمان ثغرة صفرية حرجة تؤثر على متصفحات الويب الرئيسية."></p>
+                            <span class="news-date" data-en="1 week ago" data-ar="منذ أسبوع"></span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
         <section class="newsletter">
             <div class="container">
                 <div class="newsletter-content">
@@ -246,10 +565,12 @@
                 <div class="footer-section">
                     <h3 class="footer-title" data-en="Quick Links" data-ar="روابط سريعة"></h3>
                     <ul class="footer-links">
-                        <li><a href="#" data-en="Career Paths" data-ar="المسارات المهنية"></a></li>
-                        <li><a href="#" data-en="Resources" data-ar="الموارد"></a></li>
-                        <li><a href="#" data-en="Certifications" data-ar="الشهادات"></a></li>
-                        <li><a href="#" data-en="Tools" data-ar="الأدوات"></a></li>
+                        <li><a href="#career-paths" data-en="Career Paths" data-ar="المسارات المهنية"></a></li>
+                        <li><a href="#todo" data-en="To-Do List" data-ar="قائمة المهام"></a></li>
+                        <li><a href="#arabic-courses" data-en="Arabic Courses" data-ar="الكورسات العربية"></a></li>
+                        <li><a href="#resources" data-en="Resources" data-ar="الموارد"></a></li>
+                        <li><a href="#certifications" data-en="Certifications" data-ar="الشهادات"></a></li>
+                        <li><a href="#tools" data-en="Tools" data-ar="الأدوات"></a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
