@@ -82,6 +82,57 @@ function loadPreferences() {
     updateTheme();
 }
 
+// Navigation and scrolling
+function scrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (section) {
+        section.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }
+}
+
+// Mobile menu functionality
+function toggleMobileMenu() {
+    const mobileMenu = document.querySelector('.mobile-menu');
+    if (!mobileMenu) {
+        createMobileMenu();
+    } else {
+        mobileMenu.classList.toggle('active');
+    }
+}
+
+function createMobileMenu() {
+    const mobileMenu = document.createElement('div');
+    mobileMenu.className = 'mobile-menu';
+    mobileMenu.innerHTML = `
+        <div class="mobile-menu-header">
+            <h3 data-en="Menu" data-ar="القائمة"></h3>
+            <button class="mobile-menu-close" onclick="toggleMobileMenu()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="mobile-menu-links">
+            <a href="#home" class="mobile-menu-link" onclick="toggleMobileMenu()" data-en="Home" data-ar="الرئيسية"></a>
+            <a href="#career-paths" class="mobile-menu-link" onclick="toggleMobileMenu()" data-en="Career Paths" data-ar="المسارات المهنية"></a>
+            <a href="#todo" class="mobile-menu-link" onclick="toggleMobileMenu()" data-en="To-Do List" data-ar="قائمة المهام"></a>
+            <a href="#arabic-courses" class="mobile-menu-link" onclick="toggleMobileMenu()" data-en="Arabic Courses" data-ar="الكورسات العربية"></a>
+            <a href="#resources" class="mobile-menu-link" onclick="toggleMobileMenu()" data-en="Resources" data-ar="الموارد"></a>
+            <a href="#tools" class="mobile-menu-link" onclick="toggleMobileMenu()" data-en="Tools" data-ar="الأدوات"></a>
+            <a href="#certifications" class="mobile-menu-link" onclick="toggleMobileMenu()" data-en="Certifications" data-ar="الشهادات"></a>
+            <a href="#community" class="mobile-menu-link" onclick="toggleMobileMenu()" data-en="Community" data-ar="المجتمع"></a>
+            <a href="#news" class="mobile-menu-link" onclick="toggleMobileMenu()" data-en="News" data-ar="الأخبار"></a>
+        </div>
+    `;
+    
+    document.body.appendChild(mobileMenu);
+    mobileMenu.classList.add('active');
+    
+    // Update language for mobile menu
+    updateLanguage();
+}
+
 // Modal functionality
 function showPathDetails(pathType) {
     const modal = document.getElementById('pathModal');
@@ -838,6 +889,37 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+    
+    // Add smooth scrolling for hero buttons
+    document.querySelectorAll('.hero-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const sectionId = this.getAttribute('onclick').match(/'([^']+)'/)[1];
+            scrollToSection(sectionId);
+        });
+    });
+    
+    // Add active navigation highlighting
+    window.addEventListener('scroll', function() {
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (window.pageYOffset >= sectionTop - 200) {
+                current = section.getAttribute('id');
+            }
+        });
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+    });
 });
 
 // Keyboard shortcuts
@@ -886,7 +968,7 @@ const observer = new IntersectionObserver((entries) => {
 
 // Observe elements for animation
 document.addEventListener('DOMContentLoaded', function() {
-    const animatedElements = document.querySelectorAll('.resource-category, .newsletter-content');
+    const animatedElements = document.querySelectorAll('.resource-category, .newsletter-content, .tool-category, .certification-card, .community-card, .news-card');
     animatedElements.forEach(el => observer.observe(el));
 });
 
@@ -895,3 +977,319 @@ window.toggleLanguage = toggleLanguage;
 window.toggleTheme = toggleTheme;
 window.showPathDetails = showPathDetails;
 window.closePathModal = closePathModal;
+window.scrollToSection = scrollToSection;
+window.toggleMobileMenu = toggleMobileMenu;
+
+// To-Do List functionality
+let todos = [];
+
+// Load todos from localStorage
+function loadTodos() {
+    const savedTodos = localStorage.getItem('cybersecurity-roadmap-todos');
+    if (savedTodos) {
+        todos = JSON.parse(savedTodos);
+        renderTodos();
+    }
+}
+
+// Save todos to localStorage
+function saveTodos() {
+    localStorage.setItem('cybersecurity-roadmap-todos', JSON.stringify(todos));
+}
+
+// Add new todo item
+function addTodoItem() {
+    const input = document.getElementById('todoInput');
+    const pathSelect = document.getElementById('todoPath');
+    
+    const text = input.value.trim();
+    const path = pathSelect.value;
+    
+    if (!text) {
+        alert(currentLanguage === 'en' ? 'Please enter a task!' : 'الرجاء إدخال مهمة!');
+        return;
+    }
+    
+    const todo = {
+        id: Date.now(),
+        text: text,
+        path: path,
+        completed: false,
+        createdAt: new Date().toISOString(),
+        pathName: getPathName(path)
+    };
+    
+    todos.unshift(todo);
+    saveTodos();
+    renderTodos();
+    
+    // Clear input
+    input.value = '';
+    
+    // Show success message
+    showNotification(
+        currentLanguage === 'en' ? 'Task added successfully!' : 'تمت إضافة المهمة بنجاح!',
+        'success'
+    );
+}
+
+// Get path name in current language
+function getPathName(pathKey) {
+    const pathNames = {
+        pentest: { en: 'Penetration Testing', ar: 'اختبار الاختراق' },
+        analysis: { en: 'Security Analysis', ar: 'تحليل الأمان' },
+        incident: { en: 'Incident Response', ar: 'الاستجابة للحوادث' },
+        forensics: { en: 'Digital Forensics', ar: 'التحليل الجنائي الرقمي' },
+        governance: { en: 'Security Governance', ar: 'حوكمة الأمان' },
+        cloud: { en: 'Cloud Security', ar: 'أمان السحابة' },
+        iot: { en: 'IoT Security', ar: 'أمان إنترنت الأشياء' },
+        malware: { en: 'Malware Analysis', ar: 'تحليل البرمجيات الخبيثة' }
+    };
+    
+    return pathNames[pathKey] ? pathNames[pathKey][currentLanguage] : pathKey;
+}
+
+// Toggle todo completion
+function toggleTodo(id) {
+    const todo = todos.find(t => t.id === id);
+    if (todo) {
+        todo.completed = !todo.completed;
+        saveTodos();
+        renderTodos();
+    }
+}
+
+// Delete todo item
+function deleteTodo(id) {
+    todos = todos.filter(t => t.id !== id);
+    saveTodos();
+    renderTodos();
+    
+    showNotification(
+        currentLanguage === 'en' ? 'Task deleted successfully!' : 'تم حذف المهمة بنجاح!',
+        'success'
+    );
+}
+
+// Clear completed todos
+function clearCompletedTodos() {
+    const completedCount = todos.filter(t => t.completed).length;
+    
+    if (completedCount === 0) {
+        showNotification(
+            currentLanguage === 'en' ? 'No completed tasks to clear!' : 'لا توجد مهام مكتملة للمسح!',
+            'info'
+        );
+        return;
+    }
+    
+    if (confirm(currentLanguage === 'en' ? 
+        `Are you sure you want to clear ${completedCount} completed tasks?` : 
+        `هل أنت متأكد من أنك تريد مسح ${completedCount} مهمة مكتملة؟`)) {
+        
+        todos = todos.filter(t => !t.completed);
+        saveTodos();
+        renderTodos();
+        
+        showNotification(
+            currentLanguage === 'en' ? 'Completed tasks cleared successfully!' : 'تم مسح المهام المكتملة بنجاح!',
+            'success'
+        );
+    }
+}
+
+// Render todos in the UI
+function renderTodos() {
+    const todoList = document.getElementById('todoList');
+    if (!todoList) return;
+    
+    if (todos.length === 0) {
+        todoList.innerHTML = `
+            <div class="todo-empty" style="text-align: center; padding: 2rem; color: var(--text-muted);">
+                <i class="fas fa-clipboard-list" style="font-size: 3rem; margin-bottom: 1rem; display: block;"></i>
+                <p data-en="No tasks yet. Add your first learning task!" data-ar="لا توجد مهام بعد. أضف مهمة التعلم الأولى!"></p>
+            </div>
+        `;
+        return;
+    }
+    
+    todoList.innerHTML = todos.map(todo => `
+        <div class="todo-item ${todo.completed ? 'completed' : ''}" data-id="${todo.id}">
+            <div class="todo-checkbox ${todo.completed ? 'checked' : ''}" onclick="toggleTodo(${todo.id})">
+                ${todo.completed ? '<i class="fas fa-check"></i>' : ''}
+            </div>
+            <div class="todo-content">
+                <div class="todo-text">${todo.text}</div>
+                <div class="todo-meta">
+                    <span class="todo-path">${todo.pathName}</span>
+                    <span class="todo-date">${formatDate(todo.createdAt)}</span>
+                </div>
+            </div>
+            <div class="todo-actions">
+                <button class="todo-action-btn" onclick="editTodo(${todo.id})" title="${currentLanguage === 'en' ? 'Edit' : 'تعديل'}">
+                    <i class="fas fa-edit"></i>
+                </button>
+                <button class="todo-action-btn delete" onclick="deleteTodo(${todo.id})" title="${currentLanguage === 'en' ? 'Delete' : 'حذف'}">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+        </div>
+    `).join('');
+    
+    // Update language for empty state
+    updateLanguage();
+}
+
+// Edit todo item
+function editTodo(id) {
+    const todo = todos.find(t => t.id === id);
+    if (!todo) return;
+    
+    const newText = prompt(
+        currentLanguage === 'en' ? 'Edit task:' : 'عدل المهمة:',
+        todo.text
+    );
+    
+    if (newText && newText.trim() !== '') {
+        todo.text = newText.trim();
+        saveTodos();
+        renderTodos();
+        
+        showNotification(
+            currentLanguage === 'en' ? 'Task updated successfully!' : 'تم تحديث المهمة بنجاح!',
+            'success'
+        );
+    }
+}
+
+// Format date for display
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    const now = new Date();
+    const diffTime = Math.abs(now - date);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    
+    if (diffDays === 1) {
+        return currentLanguage === 'en' ? 'Today' : 'اليوم';
+    } else if (diffDays === 2) {
+        return currentLanguage === 'en' ? 'Yesterday' : 'أمس';
+    } else if (diffDays <= 7) {
+        return currentLanguage === 'en' ? `${diffDays} days ago` : `منذ ${diffDays} أيام`;
+    } else {
+        return date.toLocaleDateString(currentLanguage === 'en' ? 'en-US' : 'ar-SA');
+    }
+}
+
+// Show notification
+function showNotification(message, type = 'info') {
+    // Remove existing notifications
+    const existingNotifications = document.querySelectorAll('.notification');
+    existingNotifications.forEach(n => n.remove());
+    
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.innerHTML = `
+        <div class="notification-content">
+            <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
+            <span>${message}</span>
+        </div>
+    `;
+    
+    // Add styles
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: ${type === 'success' ? 'var(--secondary-color)' : type === 'error' ? 'var(--danger-color)' : 'var(--primary-color)'};
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radius: 0.5rem;
+        box-shadow: var(--shadow-lg);
+        z-index: 10000;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        max-width: 300px;
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Animate in
+    setTimeout(() => {
+        notification.style.transform = 'translateX(0)';
+    }, 100);
+    
+    // Auto remove after 5 seconds
+    setTimeout(() => {
+        notification.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 300);
+    }, 5000);
+}
+
+// Add keyboard shortcuts for todo
+document.addEventListener('keydown', function(e) {
+    // Enter key to add todo
+    if (e.key === 'Enter' && document.activeElement.id === 'todoInput') {
+        addTodoItem();
+    }
+    
+    // Ctrl/Cmd + Enter to add todo from anywhere
+    if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+        const input = document.getElementById('todoInput');
+        if (input && input.value.trim()) {
+            addTodoItem();
+        }
+    }
+});
+
+// Initialize todo system when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    // ... existing code ...
+    
+    // Load todos
+    loadTodos();
+    
+    // Add sample todos if none exist
+    if (todos.length === 0) {
+        const sampleTodos = [
+            {
+                id: Date.now() - 3,
+                text: currentLanguage === 'en' ? 'Learn basic networking concepts' : 'تعلم مفاهيم الشبكات الأساسية',
+                path: 'pentest',
+                completed: false,
+                createdAt: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString(),
+                pathName: getPathName('pentest')
+            },
+            {
+                id: Date.now() - 2,
+                text: currentLanguage === 'en' ? 'Practice Linux commands' : 'تدرب على أوامر لينكس',
+                path: 'pentest',
+                completed: true,
+                createdAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
+                pathName: getPathName('pentest')
+            },
+            {
+                id: Date.now() - 1,
+                text: currentLanguage === 'en' ? 'Study OWASP Top 10 vulnerabilities' : 'ادرس الثغرات العشر الأولى من OWASP',
+                path: 'analysis',
+                completed: false,
+                createdAt: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(),
+                pathName: getPathName('analysis')
+            }
+        ];
+        
+        todos = sampleTodos;
+        saveTodos();
+        renderTodos();
+    }
+});
+
+// Export todo functions for global access
+window.addTodoItem = addTodoItem;
+window.toggleTodo = toggleTodo;
+window.deleteTodo = deleteTodo;
+window.clearCompletedTodos = clearCompletedTodos;
+window.editTodo = editTodo;
