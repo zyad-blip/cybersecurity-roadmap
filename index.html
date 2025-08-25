@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Career Roadmap</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <i class="fas fa-shield-alt"></i>
+                <span class="nav-title" data-en="CyberSec Roadmap" data-ar="خريطة الطريق للأمن السيبراني"></span>
+            </div>
+            <div class="nav-controls">
+                <button class="language-toggle" onclick="toggleLanguage()">
+                    <i class="fas fa-language"></i>
+                    <span data-en="العربية" data-ar="English"></span>
+                </button>
+                <button class="theme-toggle" onclick="toggleTheme()">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title" data-en="Cybersecurity Career Roadmap" data-ar="خريطة الطريق المهنية للأمن السيبراني"></h1>
+                <p class="hero-subtitle" data-en="Navigate your path to becoming a cybersecurity professional with comprehensive roadmaps, resources, and guidance for every specialization." data-ar="اكتشف طريقك لتصبح محترفاً في الأمن السيبراني مع خرائط طريق شاملة وموارد وتوجيه لكل تخصص."></p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">8+</span>
+                        <span class="stat-label" data-en="Career Paths" data-ar="المسارات المهنية"></span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">100+</span>
+                        <span class="stat-label" data-en="Resources" data-ar="الموارد"></span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label" data-en="Learning" data-ar="التعلم"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="career-paths">
+            <div class="container">
+                <h2 class="section-title" data-en="Choose Your Cybersecurity Path" data-ar="اختر مسار الأمن السيبراني الخاص بك"></h2>
+                <div class="paths-grid">
+                    <!-- Penetration Testing -->
+                    <div class="path-card">
+                        <div class="path-icon">
+                            <i class="fas fa-bug"></i>
+                        </div>
+                        <h3 class="path-title" data-en="Penetration Testing" data-ar="اختبار الاختراق"></h3>
+                        <p class="path-description" data-en="Learn to identify and exploit vulnerabilities in systems and networks." data-ar="تعلم كيفية تحديد واستغلال الثغرات في الأنظمة والشبكات."></p>
+                        <div class="path-levels">
+                            <span class="level beginner" data-en="Beginner" data-ar="مبتدئ"></span>
+                            <span class="level intermediate" data-en="Intermediate" data-ar="متوسط"></span>
+                            <span class="level advanced" data-en="Advanced" data-ar="متقدم"></span>
+                        </div>
+                        <button class="path-btn" onclick="showPathDetails('pentest')" data-en="Explore Path" data-ar="استكشف المسار"></button>
+                    </div>
+
+                    <!-- Security Analysis -->
+                    <div class="path-card">
+                        <div class="path-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3 class="path-title" data-en="Security Analysis" data-ar="تحليل الأمان"></h3>
+                        <p class="path-description" data-en="Analyze security threats and develop defense strategies." data-ar="حلل التهديدات الأمنية وطور استراتيجيات الدفاع."></p>
+                        <div class="path-levels">
+                            <span class="level beginner" data-en="Beginner" data-ar="مبتدئ"></span>
+                            <span class="level intermediate" data-en="Intermediate" data-ar="متوسط"></span>
+                            <span class="level advanced" data-en="Advanced" data-ar="متقدم"></span>
+                        </div>
+                        <button class="path-btn" onclick="showPathDetails('analysis')" data-en="Explore Path" data-ar="استكشف المسار"></button>
+                    </div>
+
+                    <!-- Incident Response -->
+                    <div class="path-card">
+                        <div class="path-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <h3 class="path-title" data-en="Incident Response" data-ar="الاستجابة للحوادث"></h3>
+                        <p class="path-description" data-en="Respond to and recover from security incidents effectively." data-ar="استجب للحوادث الأمنية واستعد منها بفعالية."></p>
+                        <div class="path-levels">
+                            <span class="level intermediate" data-en="Intermediate" data-ar="متوسط"></span>
+                            <span class="level advanced" data-en="Advanced" data-ar="متقدم"></span>
+                        </div>
+                        <button class="path-btn" onclick="showPathDetails('incident')" data-en="Explore Path" data-ar="استكشف المسار"></button>
+                    </div>
+
+                    <!-- Forensics -->
+                    <div class="path-card">
+                        <div class="path-icon">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                        <h3 class="path-title" data-en="Digital Forensics" data-ar="التحليل الجنائي الرقمي"></h3>
+                        <p class="path-description" data-en="Investigate digital evidence and cyber crimes." data-ar="تحقق في الأدلة الرقمية والجرائم السيبرانية."></p>
+                        <div class="path-levels">
+                            <span class="level intermediate" data-en="Intermediate" data-ar="متوسط"></span>
+                            <span class="level advanced" data-en="Advanced" data-ar="متقدم"></span>
+                        </div>
+                        <button class="path-btn" onclick="showPathDetails('forensics')" data-en="Explore Path" data-ar="استكشف المسار"></button>
+                    </div>
+
+                    <!-- Governance -->
+                    <div class="path-card">
+                        <div class="path-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <h3 class="path-title" data-en="Security Governance" data-ar="حوكمة الأمان"></h3>
+                        <p class="path-description" data-en="Develop and implement security policies and compliance frameworks." data-ar="طور ونفذ السياسات الأمنية وأطر الامتثال."></p>
+                        <div class="path-levels">
+                            <span class="level intermediate" data-en="Intermediate" data-ar="متوسط"></span>
+                            <span class="level advanced" data-en="Advanced" data-ar="متقدم"></span>
+                        </div>
+                        <button class="path-btn" onclick="showPathDetails('governance')" data-en="Explore Path" data-ar="استكشف المسار"></button>
+                    </div>
+
+                    <!-- Cloud Security -->
+                    <div class="path-card">
+                        <div class="path-icon">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <h3 class="path-title" data-en="Cloud Security" data-ar="أمان السحابة"></h3>
+                        <p class="path-description" data-en="Secure cloud infrastructure and applications." data-ar="أمن البنية التحتية والتطبيقات السحابية."></p>
+                        <div class="path-levels">
+                            <span class="level intermediate" data-en="Intermediate" data-ar="متوسط"></span>
+                            <span class="level advanced" data-en="Advanced" data-ar="متقدم"></span>
+                        </div>
+                        <button class="path-btn" onclick="showPathDetails('cloud')" data-en="Explore Path" data-ar="استكشف المسار"></button>
+                    </div>
+
+                    <!-- IoT Security -->
+                    <div class="path-card">
+                        <div class="path-icon">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <h3 class="path-title" data-en="IoT Security" data-ar="أمان إنترنت الأشياء"></h3>
+                        <p class="path-description" data-en="Secure connected devices and IoT networks." data-ar="أمن الأجهزة المتصلة وشبكات إنترنت الأشياء."></p>
+                        <div class="path-levels">
+                            <span class="level intermediate" data-en="Intermediate" data-ar="متوسط"></span>
+                            <span class="level advanced" data-en="Advanced" data-ar="متقدم"></span>
+                        </div>
+                        <button class="path-btn" onclick="showPathDetails('iot')" data-en="Explore Path" data-ar="استكشف المسار"></button>
+                    </div>
+
+                    <!-- Malware Analysis -->
+                    <div class="path-card">
+                        <div class="path-icon">
+                            <i class="fas fa-virus-slash"></i>
+                        </div>
+                        <h3 class="path-title" data-en="Malware Analysis" data-ar="تحليل البرمجيات الخبيثة"></h3>
+                        <p class="path-description" data-en="Analyze and reverse engineer malicious software." data-ar="حلل وأعد هندسة البرمجيات الخبيثة."></p>
+                        <div class="path-levels">
+                            <span class="level intermediate" data-en="Intermediate" data-ar="متوسط"></span>
+                            <span class="level advanced" data-en="Advanced" data-ar="متقدم"></span>
+                        </div>
+                        <button class="path-btn" onclick="showPathDetails('malware')" data-en="Explore Path" data-ar="استكشف المسار"></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Path Details Modal -->
+        <div id="pathModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closePathModal()">&times;</span>
+                <div id="modalContent"></div>
+            </div>
+        </div>
+
+        <section class="resources">
+            <div class="container">
+                <h2 class="section-title" data-en="Learning Resources" data-ar="موارد التعلم"></h2>
+                <div class="resources-grid">
+                    <div class="resource-category">
+                        <h3 class="category-title" data-en="Free Courses" data-ar="الدورات المجانية"></h3>
+                        <ul class="resource-list">
+                            <li><a href="https://tryhackme.com" target="_blank">TryHackMe</a></li>
+                            <li><a href="https://hackthebox.com" target="_blank">HackTheBox</a></li>
+                            <li><a href="https://cybrary.it" target="_blank">Cybrary</a></li>
+                            <li><a href="https://www.sans.org/free" target="_blank">SANS Free Resources</a></li>
+                        </ul>
+                    </div>
+                    <div class="resource-category">
+                        <h3 class="category-title" data-en="Certifications" data-ar="الشهادات"></h3>
+                        <ul class="resource-list">
+                            <li><a href="https://www.comptia.org/certifications/security" target="_blank">CompTIA Security+</a></li>
+                            <li><a href="https://www.isc2.org/certifications/cc" target="_blank">ISC² CC</a></li>
+                            <li><a href="https://www.offensive-security.com/courses-and-certifications/" target="_blank">OSCP</a></li>
+                            <li><a href="https://www.sans.org/courses/" target="_blank">SANS Certifications</a></li>
+                        </ul>
+                    </div>
+                    <div class="resource-category">
+                        <h3 class="category-title" data-en="Books" data-ar="الكتب"></h3>
+                        <ul class="resource-list">
+                            <li>"The Web Application Hacker's Handbook"</li>
+                            <li>"Hacking: The Art of Exploitation"</li>
+                            <li>"Network Security: Private Communication in a Public World"</li>
+                            <li>"Applied Cryptography"</li>
+                        </ul>
+                    </div>
+                    <div class="resource-category">
+                        <h3 class="category-title" data-en="Tools" data-ar="الأدوات"></h3>
+                        <ul class="resource-list">
+                            <li><a href="https://nmap.org" target="_blank">Nmap</a></li>
+                            <li><a href="https://wireshark.org" target="_blank">Wireshark</a></li>
+                            <li><a href="https://metasploit.com" target="_blank">Metasploit</a></li>
+                            <li><a href="https://www.kali.org" target="_blank">Kali Linux</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="newsletter">
+            <div class="container">
+                <div class="newsletter-content">
+                    <h2 class="newsletter-title" data-en="Stay Updated" data-ar="ابق محدثاً"></h2>
+                    <p class="newsletter-subtitle" data-en="Get the latest cybersecurity news, trends, and learning resources delivered to your inbox." data-ar="احصل على أحدث أخبار الأمن السيبراني والاتجاهات وموارد التعلم في بريدك الإلكتروني."></p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Enter your email" class="newsletter-input" data-ar-placeholder="أدخل بريدك الإلكتروني">
+                        <button type="submit" class="newsletter-btn" data-en="Subscribe" data-ar="اشترك"></button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title" data-en="About" data-ar="حول"></h3>
+                    <p class="footer-text" data-en="Comprehensive cybersecurity career guidance and learning resources for aspiring professionals." data-ar="توجيه مهني شامل للأمن السيبراني وموارد تعليمية للمحترفين الطموحين."></p>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title" data-en="Quick Links" data-ar="روابط سريعة"></h3>
+                    <ul class="footer-links">
+                        <li><a href="#" data-en="Career Paths" data-ar="المسارات المهنية"></a></li>
+                        <li><a href="#" data-en="Resources" data-ar="الموارد"></a></li>
+                        <li><a href="#" data-en="Certifications" data-ar="الشهادات"></a></li>
+                        <li><a href="#" data-en="Tools" data-ar="الأدوات"></a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title" data-en="Connect" data-ar="تواصل"></h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright" data-en="© 2024 Cybersecurity Roadmap. All rights reserved." data-ar="© 2024 خريطة طريق الأمن السيبراني. جميع الحقوق محفوظة."></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
